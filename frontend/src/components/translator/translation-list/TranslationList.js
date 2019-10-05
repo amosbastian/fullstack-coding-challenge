@@ -9,14 +9,16 @@ const TranslationList = ({
   deleteTranslation,
   deleteLoading,
 }) => {
-  const allTranslations = translations.map(translation => (
-    <Translation
-      key={translation.uid}
-      translation={translation}
-      deleteTranslation={deleteTranslation}
-      deleteLoading={deleteLoading}
-    ></Translation>
-  ));
+  const allTranslations = translations
+    ? translations.map(translation => (
+        <Translation
+          key={translation.uid}
+          translation={translation}
+          deleteTranslation={deleteTranslation}
+          deleteLoading={deleteLoading}
+        ></Translation>
+      ))
+    : '';
 
   const clearAll = () => {
     translations.forEach(translation => {
@@ -44,7 +46,7 @@ const TranslationList = ({
             loading ? 'opacity-0' : 'opacity-100'
           }`}
         >
-          <div>{allTranslations.length} translations</div>
+          <div>{allTranslations.length || 0} translations</div>
           <button
             onClick={clearAll}
             type="button"
