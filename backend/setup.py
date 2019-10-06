@@ -13,6 +13,10 @@ setup(
         "marshmallow_sqlalchemy",
         "requests",
         "psycopg2",
-        "gunicorn"
+        "gunicorn",
+        "pytest",
+        "pytest-dotenv",
+        "pytest-mock",
+        "coverage"
     ],
 )

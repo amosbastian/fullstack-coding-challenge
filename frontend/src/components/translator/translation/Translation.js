@@ -1,17 +1,17 @@
-import PropTypes from 'prop-types';
-import React, { useState } from 'react';
-import { Flipped } from 'react-flip-toolkit';
-import PulseLoader from 'react-spinners/PulseLoader';
-import { shortnameToFlag, shortnameToName } from '../../../utilities';
+import PropTypes from "prop-types";
+import React, { useState } from "react";
+import { Flipped } from "react-flip-toolkit";
+import PulseLoader from "react-spinners/PulseLoader";
+import { shortnameToFlag, shortnameToName } from "../../../utilities";
 
 const statusMapper = {
-  new: 'badge-new',
-  translating: 'badge-pending',
-  canceled: 'badge-danger',
-  failed: 'badge-danger',
-  rejected: 'badge-danger',
-  accepted: 'badge-success',
-  completed: 'badge-success',
+  new: "badge-new",
+  translating: "badge-pending",
+  canceled: "badge-danger",
+  failed: "badge-danger",
+  rejected: "badge-danger",
+  accepted: "badge-success",
+  completed: "badge-success"
 };
 
 const Translation = ({ translation, deleteTranslation, deleteLoading }) => {
@@ -58,7 +58,7 @@ const Translation = ({ translation, deleteTranslation, deleteLoading }) => {
           </div>
           <div
             className={`flex-1 flex items-center lg:ml-5 mt-6 text-gray-800 lg:mt-0 ${
-              !translation.translated_text ? 'justify-center' : ''
+              !translation.translated_text ? "justify-center" : ""
             }`}
           >
             {translatedText}
@@ -67,14 +67,14 @@ const Translation = ({ translation, deleteTranslation, deleteLoading }) => {
             type="button"
             onClick={() => deleteTranslation(translation.uid)}
             className={`transition block absolute right-0 px-3 py-2 bg-red-200 text-red-800 rounded -mt-4 mr-3 shadow-lg focus:outline-none hover:bg-red-300 active:shadow w-20 ${
-              showDelete ? 'opacity-100' : 'opacity-0'
+              showDelete ? "opacity-100" : "opacity-0"
             }`}
           >
             {// Show loading animation if translation is being deleted
             deleteLoading ? (
               <PulseLoader sizeUnit="px" size={5} color="#9b2c2c" loading />
             ) : (
-              'Delete'
+              "Delete"
             )}
           </button>
         </div>
@@ -86,7 +86,7 @@ const Translation = ({ translation, deleteTranslation, deleteLoading }) => {
 Translation.propTypes = {
   translation: PropTypes.object,
   deleteTranslation: PropTypes.func,
-  deleteLoading: PropTypes.bool,
+  deleteLoading: PropTypes.bool
 };
 
 export default Translation;
