@@ -1,6 +1,7 @@
 import json
 
 from flask import Blueprint, Response, jsonify, request
+from flask_cors import cross_origin
 from unbabel.api import Unbabel
 from unbabel.models import Translation, TranslationSchema, db
 from unbabel.utilities import recently_updated_translations
@@ -91,6 +92,7 @@ def delete_translation(translation_uid):
 
 
 @bp.route("/stream", methods=("GET",))
+@cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
 def stream_translations():
     """Streams all recently updated translations. The EventSource interface
     can be used to receive these client-side.
