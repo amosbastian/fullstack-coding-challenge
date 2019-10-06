@@ -98,6 +98,9 @@ psql -U name_of_user -d unbabel_test
 # Set password (if you haven't already)
 psql unbabel
 \password
+
+psql unbabel_test
+\password
 ```
 
 Once done, you must also set some environment variables in the `backend` folder. An easy way to do this is to create a `.env` file with the necessary variables (see `backend/.example.env`). Of course you should exchange `username` with the name of the superuser created above, `password` with the password you set and the Unbabel API and username with real values.
