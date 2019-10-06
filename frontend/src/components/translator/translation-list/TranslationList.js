@@ -20,7 +20,6 @@ const TranslationList = ({
 
   const clearAll = () => {
     translations.forEach(translation => {
-      console.log(translation.uid);
       deleteTranslation(translation.uid);
     });
   };
