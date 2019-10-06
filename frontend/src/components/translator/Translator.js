@@ -9,7 +9,8 @@ import TranslationList from './translation-list/TranslationList';
 import TranslatorText from './translator-text/TranslatorText';
 
 const eventSource =
-  new EventSource('http://localhost:5000/translations/stream') || undefined;
+  new EventSource(`${process.env.REACT_APP_FLASK_URL}/translations/stream`) ||
+  undefined;
 
 const Translator = () => {
   const [loadingTranslations, setLoadingTranslations] = useState(true);
@@ -20,8 +21,10 @@ const Translator = () => {
   const [translationList, setTranslationList] = useState([]);
   const [deleteLoading, setDeleteLoading] = useState(false);
 
+  // Helper function for toasts
   const notify = message => toast(`${message}`, { type: 'error' });
 
+  // Swap target language with source language
   const swapLanguage = () => {
     const source = sourceLanguage;
     const target = targetLanguage;
@@ -29,6 +32,7 @@ const Translator = () => {
     setTargetLanguage(source);
   };
 
+  // Handle text being typed in translation textarea
   const handleTextChange = event => {
     if (event.target.value.length > 5000) {
       return;
@@ -36,6 +40,10 @@ const Translator = () => {
     setTranslationText(event.target.value);
   };
 
+  /**
+   * Sends a POST request with the submitted translation text to the Unbabel API via the backend
+   * Response is a JSON translation, which is then added to the translation list.
+   */
   const handleTextSubmit = async event => {
     event.preventDefault();
     if (!translationText) {
@@ -44,6 +52,7 @@ const Translator = () => {
     setLoadingNewTranslation(true);
 
     try {
+      // Get translation from backend
       const response = await axios.post('/translations/', {
         text: translationText,
         source_language: sourceLanguage,
@@ -51,6 +60,7 @@ const Translator = () => {
       });
       const newTranslation = response.data;
 
+      // Reset translation textarea and add translation to list
       setTranslationText('');
       setTranslationList(oldList =>
         [newTranslation, ...oldList].sort(sortByTranslatedText)
@@ -61,6 +71,7 @@ const Translator = () => {
     setLoadingNewTranslation(false);
   };
 
+  // Allow users to submit text with Enter, but go to a new line with Shift + Enter
   const handleKeyDown = event => {
     if (event.key === 'Enter' && event.shiftKey === false) {
       event.preventDefault();
@@ -68,6 +79,7 @@ const Translator = () => {
     }
   };
 
+  // Clear the translation textarea
   const handleTextClear = event => {
     event.preventDefault();
     if (!translationText) {
@@ -76,23 +88,34 @@ const Translator = () => {
     setTranslationText('');
   };
 
+  /**
+   * Sends a DELETE request to the Unbabel API. If successful, then the deleted translation is
+   * filtered out from the translation list.
+   */
   const deleteTranslation = async translationUid => {
     setDeleteLoading(true);
     const response = await axios.delete(
       `/translations/delete/${translationUid}`
     );
 
+    // Translation was deleted successfully
     if (response.data.message === 'success') {
       setTranslationList(oldList =>
         [...oldList].filter(translation => translation.uid !== translationUid)
       );
     } else {
+      // Show toast if translation could not be deleted
       notify('Could not delete translation!');
     }
     setDeleteLoading(false);
   };
 
+  /**
+   * Stream recently updated translations with an EventSource interface. Updated translations are
+   * subsequently updated in the translation list.
+   */
   useEffect(() => {
+    // Replace translation in translation list with updated translation
     const upsertTranslations = updatedTranslations => {
       const currentTranslations = [...translationList];
       updatedTranslations.forEach(updatedTranslation => {
@@ -103,6 +126,8 @@ const Translator = () => {
       });
       setTranslationList([...currentTranslations].sort(sortByTranslatedText));
     };
+
+    // Listen to server-sent events
     if (eventSource) {
       eventSource.onmessage = event => {
         upsertTranslations(JSON.parse(event.data));
@@ -110,6 +135,7 @@ const Translator = () => {
     }
   }, [translationList]);
 
+  // Fetch the translations already in the database
   useEffect(() => {
     let didCancel = false;
 
@@ -121,6 +147,7 @@ const Translator = () => {
           setTranslationList(response.data.sort(sortByTranslatedText));
         }
       } catch (error) {
+        // Show toast is translations could not be fetched
         notify('Could not fetch translations!');
       }
     }

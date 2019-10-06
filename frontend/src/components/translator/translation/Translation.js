@@ -17,6 +17,7 @@ const statusMapper = {
 const Translation = ({ translation, deleteTranslation, deleteLoading }) => {
   const [showDelete, setShowDelete] = useState(false);
 
+  // Set loading animation if text hasn't been translated yet
   const translatedText = translation.translated_text ? (
     translation.translated_text
   ) : (
@@ -26,6 +27,7 @@ const Translation = ({ translation, deleteTranslation, deleteLoading }) => {
   return (
     <Flipped flipId={translation.uid}>
       <div
+        // Showing / hiding the delete button
         onMouseEnter={() => setShowDelete(true)}
         onMouseLeave={() => setShowDelete(false)}
         className="flex flex-col transition transition-bg bg-white hover:bg-gray-200 border border-l-0 border-r-0 border-t-0"
@@ -68,7 +70,8 @@ const Translation = ({ translation, deleteTranslation, deleteLoading }) => {
               showDelete ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            {deleteLoading ? (
+            {// Show loading animation if translation is being deleted
+            deleteLoading ? (
               <PulseLoader sizeUnit="px" size={5} color="#9b2c2c" loading />
             ) : (
               'Delete'

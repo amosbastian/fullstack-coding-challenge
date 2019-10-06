@@ -5,7 +5,8 @@ import './assets/styles/tailwind.css';
 import Application from './components/application/Application';
 import * as serviceWorker from './serviceWorker';
 
-axios.defaults.baseURL = process.env.REACT_APP_FLASK_URL;
+// Get baseURL from .env or use Flask's default
+axios.defaults.baseURL = process.env.REACT_APP_FLASK_URL || 'localhost:5000';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 ReactDOM.render(<Application />, document.getElementById('root'));

@@ -14,9 +14,8 @@ migrate = Migrate()
 
 def create_app(testing=False):
     app = Flask(__name__, instance_relative_config=True)
-    app.config['CORS_HEADERS'] = 'Content-Type'
     app.config.from_object(ProductionConfiguration())
-    CORS(app)
+    CORS(app, resources={r"/*": {"origins": "*"}})
 
     if testing:
         app.config.from_object(TestingConfiguration())

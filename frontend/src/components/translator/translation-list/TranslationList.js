@@ -9,6 +9,7 @@ const TranslationList = ({
   deleteTranslation,
   deleteLoading,
 }) => {
+  // Map list of translation objects to Translation component
   const allTranslations = translations.map(translation => (
     <Translation
       key={translation.uid}
@@ -18,6 +19,7 @@ const TranslationList = ({
     ></Translation>
   ));
 
+  // Delete all translations
   const clearAll = () => {
     translations.forEach(translation => {
       deleteTranslation(translation.uid);

@@ -3,6 +3,7 @@ import React from 'react';
 import LanguageSelector from './language-selector/LanguageSelector';
 import SwapLanguageButton from './swap-language-button/SwapLanguageButton';
 
+// Only support English to Spanish and vice-versa
 const languageMap = {
   es: 'spanish',
   en: 'english',

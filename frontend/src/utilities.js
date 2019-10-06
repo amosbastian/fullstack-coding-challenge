@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
 
+// Map country shortname to full language name
 const shortnameToNameMapper = {
   pt: 'Portuguese',
   en: 'English',
@@ -17,7 +18,9 @@ const shortnameToNameMapper = {
   hi: 'Hindi',
   'es-latam': 'Spanish(Latam)',
 };
+export const shortnameToName = shortname => shortnameToNameMapper[shortname];
 
+// Map country shortname to the country's flag
 const shortnameToFlagMapper = {
   en: (
     <ReactCountryFlag
@@ -40,11 +43,9 @@ const shortnameToFlagMapper = {
     ></ReactCountryFlag>
   ),
 };
-
 export const shortnameToFlag = shortname => shortnameToFlagMapper[shortname];
 
-export const shortnameToName = shortname => shortnameToNameMapper[shortname];
-
+// Helper to sort translation list by the length of a translation's translated text
 export const sortByTranslatedText = (a, b) => {
   if (!a.translated_text) {
     a.translated_text = '';

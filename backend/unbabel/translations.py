@@ -92,7 +92,7 @@ def delete_translation(translation_uid):
 
 
 @bp.route("/stream", methods=("GET",))
-@cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
+@cross_origin(origin="*")
 def stream_translations():
     """Streams all recently updated translations. The EventSource interface
     can be used to receive these client-side.
