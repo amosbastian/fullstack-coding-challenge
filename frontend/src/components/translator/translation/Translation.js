@@ -17,13 +17,13 @@ const statusMapper = {
 const Translation = ({ translation, deleteTranslation, deleteLoading }) => {
   const [showDelete, setShowDelete] = useState(false);
 
-  const translatedText = translation ? (
+  const translatedText = translation.translated_text ? (
     translation.translated_text
   ) : (
     <PulseLoader sizeUnit="px" size={5} color="#5a67d8" loading />
   );
 
-  const translationComponent = translation ? (
+  return (
     <Flipped flipId={translation.uid}>
       <div
         onMouseEnter={() => setShowDelete(true)}
@@ -77,11 +77,7 @@ const Translation = ({ translation, deleteTranslation, deleteLoading }) => {
         </div>
       </div>
     </Flipped>
-  ) : (
-    ''
   );
-
-  return { translationComponent };
 };
 
 Translation.propTypes = {
