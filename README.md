@@ -31,7 +31,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![Unbabel Translate](https://i.imgur.com/gRmFK5d.png)
 
 For the challenge I have created an application à la Google Translate, except using Unbabel's API. Some of its features are:
 
@@ -75,6 +75,8 @@ git clone git@github.com:amosbastian/fullstack-coding-challenge.git
 ```
 #### Backend
 
+---
+
 Since this project uses PostgreSQL as its database, you must install it first. On Ubuntu do the following
 
 ```sh
@@ -102,11 +104,15 @@ Once done, you must also set some environment variables in the `backend` folder.
 
 #### Frontend
 
+---
+
 The frontend is created in React and so you need either [npm](https://www.npmjs.com/get-npm) or [yarn](https://yarnpkg.com/lang/en/) to install it.
 
 ### Installation
  
 #### Backend
+
+---
 
 ```sh
 cd backend
@@ -126,6 +132,8 @@ If it doesn't work, then you probably didn't set up the PostgreSQL database corr
 
 #### Frontend
 
+---
+
 ```sh
 cd frontend
 
@@ -143,6 +151,8 @@ yarn start
 I have created tests for both the backend and the frontend using [pytest](https://docs.pytest.org/en/latest/) and [Jest](https://jestjs.io/) + [Enzyme](https://airbnb.io/enzyme/) respectively.
 
 #### Backend
+
+---
 
 For mocking I used `pytest-mock` and for coverage I used `coverage`. To run the tests you can use either:
 
@@ -172,6 +182,8 @@ TOTAL                        153      1     20      3    98%
 ```
 
 #### Frontend
+
+---
 
 Since the frontend is bootstrapped with `create-react-app` it already includes Jest, but I also used Enzyme to test components in isolation from the child components they render. You can run the tests with
 
