@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/unbabel-translate/static/css/main.1264657e.chunk.css",
-    "main.js": "/unbabel-translate/static/js/main.b221ad59.chunk.js",
-    "main.js.map": "/unbabel-translate/static/js/main.b221ad59.chunk.js.map",
-    "runtime-main.js": "/unbabel-translate/static/js/runtime-main.3acc9986.js",
-    "runtime-main.js.map": "/unbabel-translate/static/js/runtime-main.3acc9986.js.map",
-    "static/css/2.5dbdccff.chunk.css": "/unbabel-translate/static/css/2.5dbdccff.chunk.css",
-    "static/js/2.b47265ef.chunk.js": "/unbabel-translate/static/js/2.b47265ef.chunk.js",
-    "static/js/2.b47265ef.chunk.js.map": "/unbabel-translate/static/js/2.b47265ef.chunk.js.map",
-    "index.html": "/unbabel-translate/index.html",
-    "precache-manifest.3074839f5a6604b1e6ebb8fbbdcacd53.js": "/unbabel-translate/precache-manifest.3074839f5a6604b1e6ebb8fbbdcacd53.js",
-    "service-worker.js": "/unbabel-translate/service-worker.js",
-    "static/css/2.5dbdccff.chunk.css.map": "/unbabel-translate/static/css/2.5dbdccff.chunk.css.map",
-    "static/css/main.1264657e.chunk.css.map": "/unbabel-translate/static/css/main.1264657e.chunk.css.map",
-    "static/media/unbabel-logo.svg": "/unbabel-translate/static/media/unbabel-logo.6a891f45.svg"
+    "main.css": "/fullstack-coding-challenge/static/css/main.1264657e.chunk.css",
+    "main.js": "/fullstack-coding-challenge/static/js/main.00959d0f.chunk.js",
+    "main.js.map": "/fullstack-coding-challenge/static/js/main.00959d0f.chunk.js.map",
+    "runtime-main.js": "/fullstack-coding-challenge/static/js/runtime-main.40c70e8a.js",
+    "runtime-main.js.map": "/fullstack-coding-challenge/static/js/runtime-main.40c70e8a.js.map",
+    "static/css/2.5dbdccff.chunk.css": "/fullstack-coding-challenge/static/css/2.5dbdccff.chunk.css",
+    "static/js/2.b47265ef.chunk.js": "/fullstack-coding-challenge/static/js/2.b47265ef.chunk.js",
+    "static/js/2.b47265ef.chunk.js.map": "/fullstack-coding-challenge/static/js/2.b47265ef.chunk.js.map",
+    "index.html": "/fullstack-coding-challenge/index.html",
+    "precache-manifest.4d0135cdd6448e49ec53d993457f8f5e.js": "/fullstack-coding-challenge/precache-manifest.4d0135cdd6448e49ec53d993457f8f5e.js",
+    "service-worker.js": "/fullstack-coding-challenge/service-worker.js",
+    "static/css/2.5dbdccff.chunk.css.map": "/fullstack-coding-challenge/static/css/2.5dbdccff.chunk.css.map",
+    "static/css/main.1264657e.chunk.css.map": "/fullstack-coding-challenge/static/css/main.1264657e.chunk.css.map",
+    "static/media/unbabel-logo.svg": "/fullstack-coding-challenge/static/media/unbabel-logo.6a891f45.svg"
   }
 }
