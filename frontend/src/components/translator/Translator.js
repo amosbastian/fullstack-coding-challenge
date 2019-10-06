@@ -1,30 +1,30 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Flipper } from "react-flip-toolkit";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { sortByTranslatedText } from "../../utilities";
-import LanguageBar from "./language-bar/LanguageBar";
-import TranslationList from "./translation-list/TranslationList";
-import TranslatorText from "./translator-text/TranslatorText";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Flipper } from 'react-flip-toolkit';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { sortByTranslatedText } from '../../utilities';
+import LanguageBar from './language-bar/LanguageBar';
+import TranslationList from './translation-list/TranslationList';
+import TranslatorText from './translator-text/TranslatorText';
 
 const flaskUrl = process.env.REACT_APP_FLASK_URL
   ? process.env.REACT_APP_FLASK_URL
-  : "http://localhost:5000";
+  : 'http://localhost:5000';
 const eventSource =
   new EventSource(`${flaskUrl}/translations/stream`) || undefined;
 
 const Translator = () => {
   const [loadingTranslations, setLoadingTranslations] = useState(true);
   const [loadingNewTranslation, setLoadingNewTranslation] = useState(false);
-  const [sourceLanguage, setSourceLanguage] = useState("en");
-  const [targetLanguage, setTargetLanguage] = useState("es");
-  const [translationText, setTranslationText] = useState("");
+  const [sourceLanguage, setSourceLanguage] = useState('en');
+  const [targetLanguage, setTargetLanguage] = useState('es');
+  const [translationText, setTranslationText] = useState('');
   const [translationList, setTranslationList] = useState([]);
   const [deleteLoading, setDeleteLoading] = useState(false);
 
   // Helper function for toasts
-  const notify = message => toast(`${message}`, { type: "error" });
+  const notify = message => toast(`${message}`, { type: 'error' });
 
   // Swap target language with source language
   const swapLanguage = () => {
@@ -55,27 +55,27 @@ const Translator = () => {
 
     try {
       // Get translation from backend
-      const response = await axios.post("/translations/", {
+      const response = await axios.post('/translations/', {
         text: translationText,
         source_language: sourceLanguage,
-        target_language: targetLanguage
+        target_language: targetLanguage,
       });
       const newTranslation = response.data;
 
       // Reset translation textarea and add translation to list
-      setTranslationText("");
+      setTranslationText('');
       setTranslationList(oldList =>
         [newTranslation, ...oldList].sort(sortByTranslatedText)
       );
     } catch (error) {
-      notify("Could not submit translation!");
+      notify('Could not submit translation!');
     }
     setLoadingNewTranslation(false);
   };
 
   // Allow users to submit text with Enter, but go to a new line with Shift + Enter
   const handleKeyDown = event => {
-    if (event.key === "Enter" && event.shiftKey === false) {
+    if (event.key === 'Enter' && event.shiftKey === false) {
       event.preventDefault();
       handleTextSubmit(event);
     }
@@ -87,7 +87,7 @@ const Translator = () => {
     if (!translationText) {
       return;
     }
-    setTranslationText("");
+    setTranslationText('');
   };
 
   /**
@@ -101,13 +101,13 @@ const Translator = () => {
     );
 
     // Translation was deleted successfully
-    if (response.data.message === "success") {
+    if (response.data.message === 'success') {
       setTranslationList(oldList =>
         [...oldList].filter(translation => translation.uid !== translationUid)
       );
     } else {
       // Show toast if translation could not be deleted
-      notify("Could not delete translation!");
+      notify('Could not delete translation!');
     }
     setDeleteLoading(false);
   };
@@ -143,14 +143,14 @@ const Translator = () => {
 
     async function fetchTranslations() {
       try {
-        const response = await axios.get("/translations/");
+        const response = await axios.get('/translations/');
         if (!didCancel) {
           // Ignore if we started fetching something else
           setTranslationList(response.data.sort(sortByTranslatedText));
         }
       } catch (error) {
         // Show toast is translations could not be fetched
-        notify("Could not fetch translations!");
+        notify('Could not fetch translations!');
       }
     }
 
@@ -180,7 +180,7 @@ const Translator = () => {
       </div>
       <div className="lg:max-w-3xl w-full lg:my-10">
         <Flipper
-          flipKey={translationList.map(translation => translation.uid).join("")}
+          flipKey={translationList.map(translation => translation.uid).join('')}
         >
           <TranslationList
             loading={loadingTranslations}
