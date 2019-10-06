@@ -5,8 +5,7 @@ import './assets/styles/tailwind.css';
 import Application from './components/application/Application';
 import * as serviceWorker from './serviceWorker';
 
-// TODO: load from .env
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = process.env.REACT_APP_FLASK_URL;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 ReactDOM.render(<Application />, document.getElementById('root'));

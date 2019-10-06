@@ -48,7 +48,9 @@ const TranslationList = ({
           <button
             onClick={clearAll}
             type="button"
-            className="block transition text-gray-500 hover:text-gray-700 focus:outline-none"
+            className={`block transition text-gray-500 hover:text-gray-700 focus:outline-none transition transition-slower ${
+              translations ? 'opacity-100' : 'opacity-0'
+            }`}
           >
             Clear all
           </button>
