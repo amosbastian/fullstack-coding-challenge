@@ -109,7 +109,7 @@ Once done, you must also set some environment variables in the `backend` folder.
 
 ---
 
-The frontend is created in React and so you need either [npm](https://www.npmjs.com/get-npm) or [yarn](https://yarnpkg.com/lang/en/) to install it.
+The frontend is created in React and so you need either [npm](https://www.npmjs.com/get-npm) or [yarn](https://yarnpkg.com/lang/en/) to install it. If you are using anything other than `http://localhost:5000` for the Flask application, then you should also create `/frontend/.env` with `REACT_APP_FLASK_URL` set to whatever you are using instead.
 
 ### Installation
  
